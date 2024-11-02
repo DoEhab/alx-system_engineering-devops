@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# This script is printing text 
-for i in {1..10};
+# This script is printing text
+
+for i in {1..10}
 do
-echo "Best School"
+	echo "Best School"
 done
