@@ -2,7 +2,7 @@
 #This script prints best school 
 
 i=0
-while [ $i -lt 10 ];
+while [ $i -lt 11 ];
 do
  if [ $i -eq 4 ]; 
  then 
