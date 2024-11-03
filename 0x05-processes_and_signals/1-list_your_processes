@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#print list of proccesses from all users
+
+ps -auxf
+
