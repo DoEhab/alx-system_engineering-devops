@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# write to file and remove it upon receiving quit
+
+end()
+{
+  rm /var/run/holbertonscript.pid
+  exit
+}
+
+echo "$$" > /var/run/myscript.pid
+while true
+do
+  echo "To infinity and beyond"
+  trap 'echo "I hate the kill comman"' SIGTERM
+  trap 'echo "Y U no love me?!"' SIGINT
+  trap 'end' SIGQUIT
+done
