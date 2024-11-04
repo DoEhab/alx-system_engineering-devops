@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#print list of proccesses from all users
+# shellcheck disable=SC2009
+
+ps -aux | grep bash
+
