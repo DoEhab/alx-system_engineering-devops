@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #creatw password protected key
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/school -N betty
+ssh-keygen -b 4096 -f school -N betty
 
