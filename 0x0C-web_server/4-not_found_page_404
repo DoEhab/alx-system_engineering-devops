@@ -4,6 +4,7 @@ apt-get update -y
 apt-get install -y nginx
 
 mkdir -p /etc/nginx/html
+touch /etc/nginx/html/404.html
 
 echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
 
