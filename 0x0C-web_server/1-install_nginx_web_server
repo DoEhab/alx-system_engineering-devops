@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Update package list and install nginx
+apt-get update -y
+apt-get install -y nginx
+
+mkdir /etc/nginx/html
+touch /etc/nginx/html/index.html
+echo "Hello World!" > /etc/nginx/html/index.html
+
+sed -i 's|root /var/www/html;|root /etc/nginx/html;|g' /etc/nginx/sites-available/default
+
+sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+sed -i 's/listen \[::\]:80 default_server;/listen [::]:80;/g' /etc/nginx/sites-available/default
+
+service nginx restart
+
