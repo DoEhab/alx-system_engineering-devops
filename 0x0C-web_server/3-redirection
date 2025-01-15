@@ -17,8 +17,6 @@ server {
     root /etc/nginx/html;
     index index.html;
 
-    server_name localhost;
-
     # Redirection for /redirect_me
     location /redirect_me {
         return 301 https://www.youtube.com;
