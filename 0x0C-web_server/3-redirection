@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#add redirection page
 apt-get update -y
 apt-get install -y nginx
 
