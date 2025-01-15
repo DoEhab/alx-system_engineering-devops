@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 #secure copy of local file to server
 #Takes 4 params
 #1st param is path to file
