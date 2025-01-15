@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Get Apache to run on container by default
 echo "ServerName localhost" >> /etc/apache2.conf
-apachectl -D FOREGROUND
+service apache2 start
 
