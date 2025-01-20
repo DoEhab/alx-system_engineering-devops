@@ -1,10 +1,23 @@
 #!/usr/bin/env bash
-# This script configures nginx with header value
+# This script configures nginx with a custom HTTP header
+
 apt-get update -y
 apt-get install -y nginx
-CONFIG_FILE="/etc/nginx/nginx.conf"
+
 HOSTNAME=$(hostname)
-HEADER="add_header X-Served-By \"$HOSTNAME\";"
-sed -i "/server {/a \    $HEADER" "$CONFIG_FILE"
-systemctl reload nginx
+
+printf %s "server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    add_header X-Served-By \"$HOSTNAME\";
+    root /var/www/html;
+    index index.html index.htm;
+
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+}" > /etc/nginx/sites-available/default
+
+service nginx restart
+
 
