@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# This script configures HAProxy as a load balancer for web-01 and web-02
+
+sudo apt update -y
+sudo apt install -y haproxy
+sudo printf "%s\n" "
+frontend http_front
+    bind *:80
+    default_backend web_servers
+
+backend web_servers
+    balance roundrobin
+    cookie SERVERUSED insert indirect nocache
+    option httpchk HEAD /
+    default-server check maxconn 20
+    server web01 54.160.81.72:80 cookie web01
+    server web02 54.84.79.240:80 cookie web02
+" >> /etc/haproxy/haproxy.cfg
+sudo systemctl restart haproxy
+sudo systemctl enable haproxy
+
