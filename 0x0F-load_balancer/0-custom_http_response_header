@@ -6,18 +6,18 @@ apt-get install -y nginx
 
 HOSTNAME=$(hostname)
 
-printf %s "server {
+cat > /etc/nginx/sites-available/default <<EOF
+server {
     listen 80 default_server;
     listen [::]:80 default_server;
-    add_header X-Served-By \"$HOSTNAME\";
+    add_header X-Served-By "$HOSTNAME";
     root /var/www/html;
     index index.html index.htm;
 
     location / {
         try_files \$uri \$uri/ =404;
     }
-}" > /etc/nginx/sites-available/default
+}
+EOF
 
 service nginx restart
-
-
