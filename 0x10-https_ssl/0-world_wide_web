@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# This script prints the domain name details
+
+DOMAIN="$1"
+SUB_DOMAIN="$2"
+
+if [[ -z "$SUB_DOMAIN" ]]; then
+    for sub in www lb-01 web-01 web-02; do
+        fqdn="${sub}.${DOMAIN}"
+        result=$(dig +noall +answer "$fqdn")
+
+        if [[ -n "$result" ]]; then
+            record_type=$(echo "$result" | awk '{print $4}')
+            destination=$(echo "$result" | awk '{print $5}')
+            echo "The subdomain ${fqdn} is a ${record_type} record and points to ${destination}"
+        fi
+    done
+else
+    fqdn="${SUB_DOMAIN}.${DOMAIN}"
+    result=$(dig +noall +answer "$fqdn")
+
+    if [[ -n "$result" ]]; then
+        record_type=$(echo "$result" | awk '{print $4}')
+        destination=$(echo "$result" | awk '{print $5}')
+        echo "The subdomain ${fqdn} is a ${record_type} record and points to ${destination}"
+    fi
+fi
+
