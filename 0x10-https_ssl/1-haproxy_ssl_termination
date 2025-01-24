@@ -36,8 +36,7 @@ frontend http_front
     redirect scheme https code 301 if !{ ssl_fc }
 
 frontend https_front
-    bind *:443 ssl crt /etc/letsencrypt/live/www.aiautoapp.tech/fullchain.pem \
-        key /etc/letsencrypt/live/www.aiautoapp.tech/privkey.pem
+    bind *:443 ssl crt /etc/haproxy/certs/www.aiautoapp.tech.pem ciphers ECDHE-RSA-AES256-GCM-SHA384
     default_backend web_servers
 
 backend web_servers
@@ -46,4 +45,5 @@ backend web_servers
     default-server check maxconn 20
     server web01 54.160.81.72:80 check
     server web02 54.84.79.240:80 check
+
 
