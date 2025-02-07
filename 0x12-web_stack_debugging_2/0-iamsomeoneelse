@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#This script takes user as input and run command
+
+sudo -u "$1" whoami
+
