@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#This script create user ngninx and runs it on port 8080
+
+if ! id "nginx" &> /dev/null; then
+   sudo useradd -r -s /sbin/nologin nginx
+fi
+
+if ! command -v nginx &> /dev/null; then
+   sudo apt update && sudo apt install -y nginx
+fi
+
+NGINX_CONF = "/etc/nginx/nginx.conf"
+sudo sed -i 's/^user .*/user nginx;/' "$NGINX_CONF"
+
+DEFAULT_SITE="/etc/nginx/sites-available/default"
+sudo sed -i 's/listen 80 default_server;/listen 8080 default_server;/' "$DEFAULT_SITE"
+sudo sed -i 's/listen \[::\]:80 default_server;/listen \[::\]:8080 default_server;/' "$DEFAULT_SITE"
+
+sudo systemctl restart nginx
+sudo systemctl enable nginx
+
