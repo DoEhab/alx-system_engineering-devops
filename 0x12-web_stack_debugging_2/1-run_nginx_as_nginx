@@ -9,7 +9,7 @@ if ! command -v nginx &> /dev/null; then
    sudo apt update && sudo apt install -y nginx
 fi
 
-NGINX_CONF = "/etc/nginx/nginx.conf"
+NGINX_CONF="/etc/nginx/nginx.conf"
 sudo sed -i 's/^user .*/user nginx;/' "$NGINX_CONF"
 
 DEFAULT_SITE="/etc/nginx/sites-available/default"
