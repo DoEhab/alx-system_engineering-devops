@@ -1,9 +1,11 @@
 #!/usr/bin/python3
+""" Print the completed tasks"""
 import sys
 
 import requests
 
 if __name__ == "__main__":
+    """pass user id and print the user tasks"""
     employee_id = sys.argv[1]
     url = "https://jsonplaceholder.typicode.com/"
     try:
