@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 """ Print the completed tasks"""
-import csv
-import json
-import sys
-
 import requests
+import json
+
 
 if __name__ == "__main__":
     """pass user id and print the user tasks"""
