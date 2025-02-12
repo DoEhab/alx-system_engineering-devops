@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Print the completed tasks"""
-import requests
 import json
+import requests
 
 
 if __name__ == "__main__":
