@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     try:
         user_data = requests.get(url + "users/{}".format(employee_id)).json()
-        user_name = user_data.get("name")
+        user_name = user_data.get("username")
         post_data = requests.get(url + "todos",
                                  params={"userId": employee_id}).json()
         with open(file_name, mode="w", newline="", encoding="utf-8") as file:
