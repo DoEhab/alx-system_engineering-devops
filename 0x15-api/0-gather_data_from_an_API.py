@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """ Print the completed tasks"""
+import requests
 import sys
 
-import requests
 
 if __name__ == "__main__":
     """pass user id and print the user tasks"""
