@@ -14,7 +14,6 @@ if __name__ == "__main__":
         post_data = requests.get(url + "todos",
                                  params={"userId": employee_id}).json()
         completed_tasks = []
-        print(post_data)
         for data in post_data:
             if data.get("completed") is True:
                 completed_tasks.append(data.get("title"))
