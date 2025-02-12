@@ -17,10 +17,8 @@ if __name__ == "__main__":
         post_data = requests.get(url + "todos",
                                  params={"userId": employee_id}).json()
         with open(file_name, mode="w", newline="", encoding="utf-8") as file:
-            writer = csv.writer(file)
-            writer.writerow(
-                ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
-            )
+            writer = csv.writer(file, quotechar='"', quoting=csv.QUOTE_ALL)
+
             for data in post_data:
                 writer.writerow(
                     [employee_id, user_name, data.get("completed"),
