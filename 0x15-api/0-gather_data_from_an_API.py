@@ -10,7 +10,8 @@ if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/"
     try:
         user_data = requests.get(url + "users/{}".format(employee_id)).json()
-        post_data = requests.get(url + "todos", params={"userId": employee_id}).json()
+        post_data = requests.get(url + "todos",
+                                 params={"userId": employee_id}).json()
         completed_tasks = []
         for data in post_data:
             if data.get("completed") is True:
@@ -18,7 +19,8 @@ if __name__ == "__main__":
         print(
             "Employee "
             + user_data.get("name")
-            + "is done with ({}/{}):".format(len(completed_tasks), len(post_data))
+            + "is done with ({}/{}):"
+            .format(len(completed_tasks), len(post_data))
         )
         for task in completed_tasks:
             print("     " + str(task))
