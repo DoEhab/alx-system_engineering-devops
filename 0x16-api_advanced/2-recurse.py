@@ -3,15 +3,14 @@
 import requests
 
 
-def top_ten(subreddit):
+def recurse(subreddit, hot_list=[]):
     """return title of top ten posts"""
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     headers = {"user-agent": "python:subreddit_fetcher:v1.0 (by /u/Doha)"}
     params = {
         "limit": 10
     }
-    result = requests.get(url, headers=headers,
-                          params=params, allow_redirects=False)
+    result = requests.get(url, headers=headers, params=params, allow_redirects=False)
     if result.status_code == 404:
         print(None)
         return
